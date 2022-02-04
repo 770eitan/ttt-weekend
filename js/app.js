@@ -32,12 +32,8 @@ const square5= document.getElementById('sq5')
 const square6= document.getElementById('sq6')
 const square7= document.getElementById('sq7')
 const square8= document.getElementById('sq8')
-const array = [square0,square1,square2,square3,square4,square5,square6,square7,square8]
-let boardObj = {square : square0,
-	value: 0	
-}
+const boardArray = [square0,square1,square2,square3,square4,square5,square6,square7,square8]
 let message = document.getElementById('message')
-console.log(boardObj)
 /*----------------------------- Event Listeners -----------------------------*/
 
 
@@ -45,14 +41,34 @@ console.log(boardObj)
 
 /*-------------------------------- Functions --------------------------------*/
 init()
+
 function init(){
-array.innerHTML = null
+boardArray.innerHTML = null
 message.textContent = "Welcome, X goes first!"
 turnTracker = 1
-winner = null
-}
+winner = null}
 
-console.log(init)
+function render (){
+	let sqr=0
+	boardArray.forEach(function (sqr, idx){
+		console.log(sqr, idx)
+})
+}
+function renderX (){
+	let sqr=1
+	boardArray.forEach(function (sqr, idx){
+		const squareX = document.getElementsByClassName('.board');
+		board.style.background = 'black';
+		return squareX
+})
+}
+console.log(renderX)
+
+
+
+	console.log(render)
+
+
 
 // 1) Define the required variables used to track the state of the game:
   // None of these variables will need to hold a value when they are defined
@@ -79,4 +95,4 @@ console.log(init)
 // 5) Handle a player clicking a square
 
 // 6) Handle a player clicking the replay button
-// ```
+//
