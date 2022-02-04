@@ -62,6 +62,15 @@ function renderX (){
 		return squareX
 })
 }
+
+function renderO (){
+	let sqr=-1
+	boardArray.forEach(function (sqr, idx){
+		const squareO = document.getElementsByClassName('.board');
+		board.style.background = 'red';
+		return squareO
+})
+}
 console.log(renderX)
 
 
