@@ -15,20 +15,33 @@
 
 /*------------------------ Cached Element References ------------------------*/
 const board = document.querySelector('.board') 
-const message = document.getElementById('message')
-console.log(message)
-
+const square0= document.getElementById('sq0')
+const square1= document.getElementById('sq1')
+const square2= document.getElementById('sq2')
+const square3= document.getElementById('sq3')
+const square4= document.getElementById('sq4')
+const square5= document.getElementById('sq5')
+const square6= document.getElementById('sq6')
+const square7= document.getElementById('sq7')
+const square8= document.getElementById('sq8')
+const array = [square0,square1,square2,square3,square4,square5,square6,square7,square8]
+let boardObj = {square : square0,
+	value: 0	
+}
+let message = document.getElementById('message')
+console.log(boardObj)
 /*----------------------------- Event Listeners -----------------------------*/
 
 
 /*-------------------------------- Functions --------------------------------*/
 
 /*-------------------------------- Functions --------------------------------*/
-//AAU I should be able to know whose turn it is
-//AAU I should be able to click a box and it turn to my sign
-//
-
-
+init()
+function init(){
+array.innerHTML = null
+message.textContent = "Welcome, X goes first!"
+}
+console.log(init)
 
 // 1) Define the required variables used to track the state of the game:
   // None of these variables will need to hold a value when they are defined
