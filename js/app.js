@@ -9,6 +9,7 @@
 // let squareStatus 
 let turnTracker= 0
 let winner = null 
+let board 
 // if (WinningPaths === 3){
 // 	let winner = 1
 // } else if WinningPaths = -3 {
@@ -22,17 +23,8 @@ let winner = null
 
 
 /*------------------------ Cached Element References ------------------------*/
-const board = document.querySelector('.board') 
-const square0= document.getElementById('sq0')
-const square1= document.getElementById('sq1')
-const square2= document.getElementById('sq2')
-const square3= document.getElementById('sq3')
-const square4= document.getElementById('sq4')
-const square5= document.getElementById('sq5')
-const square6= document.getElementById('sq6')
-const square7= document.getElementById('sq7')
-const square8= document.getElementById('sq8')
-const boardArray = [square0,square1,square2,square3,square4,square5,square6,square7,square8]
+const gameBoard = document.querySelector('.board') 
+const squareEls = document.querySelectorAll(".square")
 let message = document.getElementById('message')
 /*----------------------------- Event Listeners -----------------------------*/
 
@@ -43,39 +35,56 @@ let message = document.getElementById('message')
 init()
 
 function init(){
-boardArray.innerHTML = null
-message.textContent = "Welcome, X goes first!"
-turnTracker = 1
-winner = null}
+	board = [null,null,1,-1,null,null,null,null,null]
+	message.textContent = "Welcome, X goes first!"
+	turnTracker = 1
+	winner = null
+	render()
+} 
 
 function render (){
-	let sqr=0
-	boardArray.forEach(function (sqr, idx){
-		console.log(sqr, idx)
-})
+	console.log(squareEls)
+	board.forEach(function (square, idx){
+		console.log(square, idx)
+		
+		if (square === 1){ 
+			squareEls[idx].textContent= "Chicken"
+
+		}
+		else if (square === -1){
+			squareEls[idx].textContent= "Burrito"
+
+		}
+		else {
+			squareEls[idx].textContent= ""
+		}
+	})
 }
-function renderX (){
-	let sqr=1
-	boardArray.forEach(function (sqr, idx){
-		const squareX = document.getElementsByClassName('.board');
-		board.style.background = 'black';
-		return squareX
-})
-}
 
-function renderO (){
-	let sqr=-1
-	boardArray.forEach(function (sqr, idx){
-		const squareO = document.getElementsByClassName('.board');
-		board.style.background = 'red';
-		return squareO
-})
-}
-console.log(renderX)
+// // if (!isWinner){ `It is your turn ${turnTracker ? 1: -1} ` }
+
+// // function renderX (){
+// // 	let sqr=1
+// // 	boardArray.forEach(function (sqr, idx){
+// // 		const squareX = document.getElementsByClassName('.board');
+// // 		board.style.background = 'black';
+// // 		return squareX
+// // })
+
+// // }
+
+// // function renderO (){
+// // 	let sqr=-1
+// // 	boardArray.forEach(function (sqr, idx){
+// // 		const squareO = document.getElementsByClassName('.board');
+// // 		board.style.background = 'red';
+// // 		return squareO
+// // })
+// // }
+// console.log(renderX)
 
 
 
-	console.log(render)
 
 
 
