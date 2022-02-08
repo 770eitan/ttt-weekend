@@ -51,7 +51,7 @@ imageX.src =
   init();
 
 function init() {
-  board = [-1, -1, -1, null, null, -1, 1, null, null];
+  board = Array(9).fill(null);
   message.textContent = "Welcome, X goes first!";
   boardCheck();
   turnTracker = 1;
@@ -59,14 +59,35 @@ function init() {
   render();
 }
 
-function handleClick(event) {
-  let sqIdx = event.target.id.replace("sq", "");
-  if (board[square] === null && winner === null) {
-    board[square] = turn;
-    console.log(boardArr);
-    turn = turn * -1;
-    render();
-  }
+function handleClick() {
+  gameBoard.addEventListener("click", function (e) {
+    let sqIdx = e.target.id.replace("sq", "");
+    console.log(sqIdx);
+    if (board[sqIdx] === null && winner === null) {
+      board[sqIdx] = turnTracker;
+      console.log(board);
+      turnTracker = turnTracker * -1;
+      render();
+    }
+    if (board.length > 4) {
+      // Loop Through our winnintPaths
+      WinningPaths.forEach((arr) => {
+        // if our values inside boardArray equals each winningPath array we take that
+        if (
+          board[arr[0]] &&
+          board[arr[0]] === board[arr[1]] &&
+          board[arr[1]] === board[arr[2]]
+        ) {
+          // we decide whether it's 1 or negative one
+          if (board[arr[0]] === 1) {
+            console.log("O wins");
+          } else {
+            console.log("X wins");
+          }
+        }
+      });
+    }
+  });
 }
 
 function boardCheck() {
@@ -75,13 +96,8 @@ function boardCheck() {
     console.log(a + b);
     return a + b;
   });
+  handleClick();
 }
-
-// "CA// console.log(arr);
-//     arr.reduce(function (a, b) {
-//       console.log(a + b);
-//       return a + b;
-//     });
 
 function render() {
   console.log(squareEls);
